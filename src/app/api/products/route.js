@@ -5,11 +5,6 @@ import path from "path";
 import fs from "fs/promises";
 import sharp from "sharp";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 export async function GET(request) {
   return NextResponse.json({ message: "API de productos funcionando correctamente" });

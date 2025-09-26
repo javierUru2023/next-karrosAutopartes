@@ -1,8 +1,9 @@
-import { Geist, Geist_Mono, Noto_Sans } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "700"]
 });
 import "./globals.css";
 import { Navbar } from "@/components/Navbar/navbar";
@@ -10,15 +11,6 @@ import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Karros Autopartes",
@@ -33,7 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSans.variable} antialiased pb-24`}
+  className={`${notoSans.variable} antialiased pb-24`}
       >
         <AuthProvider>
           <CartProvider>
