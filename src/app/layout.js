@@ -23,10 +23,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        suppressHydrationWarning
-  className={`${notoSans.variable} antialiased pb-24`}
-      >
+      <body suppressHydrationWarning className={`${notoSans.variable} antialiased pb-24`}>
         <AuthProvider>
           <CartProvider>
             <Navbar />

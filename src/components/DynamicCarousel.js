@@ -9,11 +9,12 @@ const images = [
   "/filtro-aceite.jpeg",
   "/lubricante.jpeg",
   "/pastillas-freno.jpg",
-  "/DiscosFrenos.jpg",
-  "/FaroIzq.jpg",
-  "/KitDistribucion.jpg",
-  "/kit-bobina-de-encendido-con-cables-1758842932235.jpg",
-  "/Modin.jpg"
+    // Removed images that do not exist in the public folder
+    // "/DiscosFrenos.jpg",
+    // "/FaroIzq.jpg",
+    // "/KitDistribucion.jpg",
+    // "/kit-bobina-de-encendido-con-cables-1758842932235.jpg",
+    // "/Modin.jpg"
 ];
 
 const effects = [
@@ -55,7 +56,13 @@ export default function DynamicCarousel() {
     return () => clearTimeout(timer);
   }, [current, sequence]);
 
-  if (sequence.length === 0) return null;
+  if (sequence.length === 0) {
+    return (
+      <div className="w-full max-w-[300px] h-[300px] mx-auto flex items-center justify-center overflow-hidden relative rounded-lg shadow-lg bg-white">
+        <span className="text-gray-500">No hay imágenes disponibles para el carrusel.</span>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-[300px] h-[300px] mx-auto flex items-center justify-center overflow-hidden relative rounded-lg shadow-lg bg-white"> 
