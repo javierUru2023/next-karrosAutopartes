@@ -2,11 +2,11 @@ import React from "react";
 
 export default function Footer() {
   return (
-  <footer className="py-6 text-white fixed bottom-0 left-0 w-full z-50" style={{background: 'linear-gradient(90deg, #005a5f 0%, #d4d600 100%)'}}>
+  <footer className="py-3 md:py-6 text-white fixed bottom-0 left-0 w-full z-50" style={{background: 'linear-gradient(90deg, #005a5f 0%, #d4d600 100%)'}}>
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-        <div className="mb-4 md:mb-0 text-center md:text-left">
-          <span className="font-bold text-lg">Karros Autopartes</span>
-          <span className="block text-xs mt-1">© {new Date().getFullYear()} Todos los derechos reservados.</span>
+        <div className="mb-2 md:mb-0 text-center md:text-left">
+          <span className="font-bold text-base md:text-lg">Karros Autopartes</span>
+          <span className="block text-[10px] md:text-xs mt-1">© {new Date().getFullYear()} Todos los derechos reservados.</span>
         </div>
         {/* ...enlaces eliminados... */}
         <div className="flex gap-4 mt-4 md:mt-0">

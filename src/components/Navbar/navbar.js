@@ -16,21 +16,22 @@ export function Navbar() {
     return (
         <>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
-                <div className="w-full flex flex-wrap items-center justify-between px-4 py-2">
-                    <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                <div className="w-full flex flex-wrap items-center justify-center md:justify-between px-4 py-2">
+                    <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
                         <Image
                             src="/logoKarrosAutopartes.svg"
                             alt="logo Karros Autopartes"
-                            width={200}
-                            height={100}
+                            width={180}
+                            height={90}
+                            className="w-28 h-16 sm:w-[120px] sm:h-[60px]"
                         />
-                        <span className="self-center text-2xl md:text-4xl lg:text-5xl font-semibold whitespace-nowrap dark:text-white">
+                        <span className="self-center text-lg sm:text-2xl md:text-4xl lg:text-5xl font-semibold whitespace-nowrap dark:text-white">
                             Karros Autopartes
                         </span>
                     </div>
                     <button
                         type="button"
-                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ml-2"
                         aria-controls="navbar-default"
                         aria-expanded={menuOpen}
                         onClick={() => setMenuOpen(!menuOpen)}

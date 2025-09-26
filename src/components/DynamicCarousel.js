@@ -65,14 +65,14 @@ export default function DynamicCarousel() {
   }
 
   return (
-    <div className="w-full max-w-[300px] h-[300px] mx-auto flex items-center justify-center overflow-hidden relative rounded-lg shadow-lg bg-white"> 
+  <div className="w-full max-w-[180px] h-[180px] sm:max-w-[300px] sm:h-[300px] mx-auto flex items-center justify-center overflow-hidden relative rounded-lg shadow-lg bg-white">
       {sequence.map((img, idx) => (
         <Image
           key={img}
           src={img}
           alt="Producto destacado"
-          width={300}
-          height={300}
+          width={180}
+          height={180}
           className={`absolute w-full h-full object-cover transition-all duration-1000
             ${effect === "fade" ? (idx === current ? "opacity-100" : "opacity-0") : ""}
             ${effect === "slide" ? (idx === current ? "translate-x-0" : "-translate-x-full") : ""}
