@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchProductsFromFirebase } from "../../firebaseUtils";
 import ProductsCard from "../../Components/ProductsCard";
 import { useParams, useRouter } from "next/navigation";
 
+export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ import { useParams, useRouter } from "next/navigation";
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     fetchProductsFromFirebase().then((data) => {
       setProducts(data);
@@ -36,8 +37,8 @@ import { useParams, useRouter } from "next/navigation";
     }
   };
 
-  if (loading) {
-    return (
+  return (
+    loading ? (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="w-full max-w-xs">
           <div className="bg-white rounded-lg shadow-md p-8 flex flex-col items-center">
@@ -49,35 +50,34 @@ import { useParams, useRouter } from "next/navigation";
           </div>
         </div>
       </div>
-    );
-  }
-
-  return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">Productos</h1>
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
-        <button
-          className={`px-4 py-2 rounded ${selectedCategory === "all" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
-          onClick={() => handleCategoryChange("all")}
-        >
-          Todos
-        </button>
-        {categories.map((cat) => (
-          cat && (
-            <button
-              key={cat}
-              className={`px-4 py-2 rounded ${selectedCategory === cat ? "bg-blue-600 text-white" : "bg-gray-200"}`}
-              onClick={() => handleCategoryChange(cat)}
-            >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </button>
-          )
-        ))}
+    ) : (
+      <div className="container mx-auto py-8">
+        <h1 className="text-3xl font-bold mb-6 text-center">Productos</h1>
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <button
+            className={`px-4 py-2 rounded ${selectedCategory === "all" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+            onClick={() => handleCategoryChange("all")}
+          >
+            Todos
+          </button>
+          {categories.map((cat) => (
+            cat && (
+              <button
+                key={cat}
+                className={`px-4 py-2 rounded ${selectedCategory === cat ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+                onClick={() => handleCategoryChange(cat)}
+              >
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </button>
+            )
+          ))}
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
+            <ProductsCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filteredProducts.map((product) => (
-          <ProductsCard key={product.id} product={product} />
-        ))}
-      </div>
-    </div>
+    )
   );
+}
