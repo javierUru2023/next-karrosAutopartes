@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Counter from "@/components/Counter";
 import { useCart } from "@/context/CartContext";
@@ -41,7 +42,7 @@ export default function ProductDetail({ product, onBack, selectedCategory }) {
         </svg>
         Volver
       </button>
-      <img src={product.image} alt={product.name} className="w-32 h-32 sm:w-48 sm:h-48 object-contain mb-4" />
+  <Image src={product.image} alt={product.name} width={192} height={192} className="w-32 h-32 sm:w-48 sm:h-48 object-contain mb-4" />
       <h2 className="text-2xl font-bold mb-2 text-center">{product.name}</h2>
       <p className="text-gray-600 mb-2 text-center">{product.description}</p>
       <span className="text-blue-700 font-bold mb-2 text-lg">${product.price}</span>

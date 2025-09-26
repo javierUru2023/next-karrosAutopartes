@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import CartSidebar from "../CartModal.jsx";
 import { useCart } from "../../context/CartContext.jsx";
 import { navbarLinks } from "./navbarlink";
@@ -17,8 +18,8 @@ export function Navbar() {
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="w-full flex flex-wrap items-center justify-between px-4 py-2">
                     <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img
-                            src="../../logoKarrosAutopartes.svg"
+                        <Image
+                            src="/logoKarrosAutopartes.svg"
                             alt="logo Karros Autopartes"
                             width={200}
                             height={100}
@@ -65,9 +66,11 @@ export function Navbar() {
                                     aria-label="Abrir carrito"
                                 >
                                     <div className="relative">
-                                        <img
-                                            src="../../cartImage.svg"
+                                        <Image
+                                            src="/cartImage.svg"
                                             alt="Logo Carrito"
+                                            width={48}
+                                            height={48}
                                             className="h-12 w-12 object-contain"
                                         />
                                         {totalQuantity > 0 && (
