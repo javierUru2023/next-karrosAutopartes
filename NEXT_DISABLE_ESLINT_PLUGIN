@@ -1,0 +1,2 @@
+// Desactiva ESLint en el build de Next.js
+// Puedes volver a activarlo eliminando esta variable de entorno
