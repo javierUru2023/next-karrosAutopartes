@@ -82,22 +82,20 @@ export default function ProductsPage() {
   return (
     <div className="container mx-auto py-8 overflow-hidden">
       <h1 className="text-3xl font-bold mb-6 text-center">Productos</h1>
-      {selectedCategory !== "all" && (
-        <div className="flex justify-center mb-4">
+      <div className="mb-8 flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+        {selectedCategory !== "all" && (
           <button
-            className="flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition shadow"
-            onClick={() => setSelectedCategory("all")}
+            className="flex items-center gap-2 px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition shadow w-1/2 sm:w-auto justify-center"
+            onClick={() => setSelectedCategory('all')}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
             Volver
           </button>
-        </div>
-      )}
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
+        )}
         <button
-          className={`px-4 py-2 rounded ${
+          className={`px-2 py-1 text-xs rounded w-1/2 sm:w-auto ${
             selectedCategory === "all"
               ? "bg-blue-600 text-white"
               : "bg-gray-200"
@@ -110,7 +108,7 @@ export default function ProductsPage() {
           cat && (
             <button
               key={cat}
-              className={`px-4 py-2 rounded ${
+              className={`px-2 py-1 text-xs rounded w-1/2 sm:w-auto ${
                 selectedCategory === cat
                   ? "bg-blue-600 text-white"
                   : "bg-gray-200"

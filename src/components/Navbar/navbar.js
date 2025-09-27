@@ -1,17 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
 import CartSidebar from "../CartModal.jsx";
 import { useCart } from "../../context/CartContext.jsx";
 import { navbarLinks } from "./navbarlink";
+import { productsDB } from "../../app/Products/Data/Products";
+import React, { useState } from "react";
 import Link from "next/link";
 
 export function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
-        const { cartItems } = useCart();
-        const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const { cartItems } = useCart();
+    const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+    // Obtener categorías únicas
+    const categories = Array.from(new Set(productsDB.map(p => p.category)));
 
     return (
         <>
@@ -21,9 +25,9 @@ export function Navbar() {
                         <Image
                             src="/logoKarrosAutopartes.svg"
                             alt="logo Karros Autopartes"
-                            width={180}
-                            height={90}
-                            className="w-28 h-16 sm:w-[120px] sm:h-[60px]"
+                            width={200}
+                            height={100}
+                            className="w-28 h-16 md:w-[300px] md:h-[150px] lg:w-[300px] lg:h-[150px]"
                         />
                         <span className="self-center text-lg sm:text-2xl md:text-4xl lg:text-5xl font-semibold whitespace-nowrap dark:text-white">
                             Karros Autopartes
@@ -54,7 +58,11 @@ export function Navbar() {
                         <ul className="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:items-center md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             {navbarLinks.map((item) => (
                                 <li key={item.label} className="w-full md:w-auto">
-                                    <Link href={item.href} className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent w-full text-center md:w-auto md:text-left">
+                                    <Link
+                                        href={item.href}
+                                        className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent w-full text-center md:w-auto md:text-left"
+                                        onClick={() => setMenuOpen(false)}
+                                    >
                                         {item.label}
                                     </Link>
                                 </li>
